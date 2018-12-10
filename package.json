@@ -11,7 +11,7 @@
     "start": "node server.js",
     "build": "ng build",
     "build:prod": "npm run build -- --prod --aot",
-    "postinstall": "ng build --aot -prod",
+    "postinstall": "ng build --aot --prod",
     "e2e": "ng e2e"
   },
   "dependencies": {
