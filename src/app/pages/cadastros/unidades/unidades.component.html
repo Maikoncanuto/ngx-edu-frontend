@@ -1,0 +1,14 @@
+<nb-card>
+  <nb-card-header>
+    Unidades cadastradas
+  </nb-card-header>
+
+ <nb-card-body class="col-md-1">
+   <button button nbTooltip="Cadastrar nova unidade" nbTooltipPlacement="right" class="btn btn-success" (click)="showModal()">Cadastrar</button>
+ </nb-card-body>
+
+  <nb-card-body>
+    <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)">
+    </ng2-smart-table>
+  </nb-card-body>
+</nb-card>

@@ -1,0 +1,140 @@
+<div class="modal-header">
+  <span>{{ modalHeader }}</span>
+  <button class="close" aria-label="Close" (click)="closeModal()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div class="col-md-12">
+        <div class="steppers-container row">
+          <div class="col-md-12 col-lg-12 col-xxxl-6">
+            <nb-card size="medium">
+              <nb-card-body>
+                <nb-stepper #stepper orientation="vertical">
+                  <!-- Primeiro passo -->
+                  <nb-step [stepControl]="primeiroForm" label="Informações unidade">
+                    <form [formGroup]="primeiroForm" (ngSubmit)="onFirstSubmit()" class="step-container">
+                      <!-- Nome da unidade -->
+                      <div class="form-group" [class]="">
+                        <label for="idInputNomeUnidade">Nome</label>
+                        <input name="nome"
+                               formControlName="nome"
+                               [ngClass]="{'form-control-danger':primeiroForm.invalid && (primeiroForm.dirty || primeiroForm.touched)}"
+                               type="text"
+                               class="form-control"
+                               id="idInputNomeUnidade"
+                               placeholder="DJRÁDIO - Asa norte">
+                      </div>
+
+                      <!-- CNPJ -->
+                      <div class="form-group">
+                        <label for="idInputCNPJ">Cnpj</label>
+                        <input name="cnpj"
+                               formControlName="cnpj"
+                               [ngClass]="{'form-control-danger':primeiroForm.invalid && (primeiroForm.dirty || primeiroForm.touched)}"
+                               type="text"
+                               class="form-control"
+                               id="idInputCNPJ"
+                               placeholder="86.765.008/0001-64">
+                      </div>
+
+                      <button class="btn btn-success" nbButton nbStepperNext>Próximo</button>
+                    </form>
+                  </nb-step>
+
+                  <!-- Segundo passo -->
+                  <nb-step [stepControl]="segundoForm" label="Informações de contato">
+                    <form [formGroup]="segundoForm" (ngSubmit)="onSecondSubmit()" class="step-container">
+
+                      <!-- Telefone unidade -->
+                      <div class="form-group">
+                        <label for="idInputTelefoneUnidade">Telefone</label>
+                        <input formControlName="telefone"
+                               name="telefone"
+                               type="text"
+                               [ngClass]="{'form-control-danger': segundoForm.invalid && (segundoForm.dirty || segundoForm.touched)}"
+                               class="form-control"
+                               id="idInputTelefoneUnidade"
+                               placeholder="(61) 3456-5767" />
+                      </div>
+
+                      <!-- Email da unidade -->
+                      <div class="form-group">
+                        <label for="idInputEmailUnidade">E-mail</label>
+                        <input formControlName="email"
+                               name="email"
+                               type="email"
+                               [ngClass]="{'form-control-danger': segundoForm.invalid && (segundoForm.dirty || segundoForm.touched)}"
+                               class="form-control"
+                               id="idInputEmailUnidade"
+                               placeholder="djradio.asanorte@djradio.com.br" />
+                      </div>
+
+                      <button class="btn btn-success" nbButton nbStepperPrevious>Anterior</button>
+                      <button class="btn btn-success" nbButton nbStepperNext>Próximo</button>
+                    </form>
+                  </nb-step>
+
+                  <!-- Terceiro passo -->
+                  <nb-step [stepControl]="terceiroForm" label="Informações do endereço">
+                    <form [formGroup]="terceiroForm" (ngSubmit)="onThirdSubmit()" class="step-container">
+                      <!-- Nome da cidade -->
+                      <div class="form-group">
+                        <label for="idInputNomeCidade">Cidade</label>
+                        <input formControlName="cidade"
+                               name="cidade"
+                               type="text"
+                               class="form-control"
+                               id="idInputNomeCidade"
+                               [ngClass]="{'form-control-danger': terceiroForm.invalid && (terceiroForm.dirty || terceiroForm.touched)}"
+                               placeholder="Asa norte">
+                      </div>
+
+                      <!-- Cep -->
+                      <div class="form-group">
+                        <label for="idInputCepUnidade">Cep</label>
+                        <input formControlName="cep"
+                               name="cep"
+                               type="text"
+                               class="form-control"
+                               id="idInputCepUnidade"
+                               [ngClass]="{'form-control-danger': terceiroForm.invalid && (terceiroForm.dirty || terceiroForm.touched)}"
+                               placeholder="72312-067">
+                      </div>
+
+                      <!-- Estado -->
+                      <div class="form-group">
+                        <label for="idInputEstadoUnidade">Estado</label>
+                        <input formControlName="estado"
+                               name="estado"
+                               type="text"
+                               [ngClass]="{'form-control-danger': terceiroForm.invalid && (terceiroForm.dirty || terceiroForm.touched)}"
+                               class="form-control"
+                               id="idInputEstadoUnidade"
+                               placeholder="Distrito federal">
+                      </div>
+
+                      <button class="btn btn-success" nbButton nbStepperPrevious>Anterior</button>
+                      <button class="btn btn-success" nbButton nbStepperNext (click)="salvarConteudo()" >Salvar</button>
+                    </form>
+                  </nb-step>
+
+                  <!-- Finalização -->
+                  <nb-step [stepControl]="terceiroForm" [hidden]="true" label="Conclusão">
+                    <div class="step-container">
+                      <h3>Cadastro completo!</h3>
+                      <button class="btn btn-success" nbButton (click)="stepper.reset()">Casdastrar outra unidade</button>
+                    </div>
+                  </nb-step>
+                </nb-stepper>
+
+                <!-- FIm -->
+              </nb-card-body>
+            </nb-card>
+          </div>
+        </div>
+  </div>
+</div>
+
+
+
