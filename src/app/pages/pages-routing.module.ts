@@ -3,18 +3,15 @@ import {NgModule} from '@angular/core';
 
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {PagesComponent} from "./pages.component";
-import {LoginComponent} from "./login/login.component";
+import {AuthGuard} from "../authentication/auth.guard";
 
 const routes: Routes = [{
   path: '',
   component: PagesComponent,
   children: [
-    {path: 'dashboard', component: DashboardComponent,},
-    {path: 'cadastros', loadChildren: './cadastros/cadastros.module#CadastrosModule'}
+    {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
+    {path: 'cadastros', loadChildren: './cadastros/cadastros.module#CadastrosModule', canActivate: [AuthGuard]}
   ]
-}, {
-  path: 'login',
-  component: LoginComponent
 }
 
 ];
